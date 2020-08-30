@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+    window.onload = function () {
+        document.getElementById("change").onclick = function () {
+            // 获取一个时间戳来欺骗浏览器每次访问的地址信息不同从而刷新图片,
+            // 否则浏览器会默认已经访问了/web_project_1/checkCodeServlet这个地址,
+            // 会从缓存中得到图片,图片就不会发生改变
+            var time = new Date().getTime();
+
+            document.getElementById("img").setAttribute("src", "/web_project_1/checkCodeServlet?"+time)
+        }
+    }
+</script>
+<body>
+    <img id="img" src="/web_project_1/checkCodeServlet">
+    <a id="change" href="">看不清换一张</a>
+</body>
+</html>
